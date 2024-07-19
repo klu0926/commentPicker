@@ -15,6 +15,9 @@ p {
 }
 
 /* general */
+.main-container {
+  margin-top: 60px;
+}
 
 .title-div {
   display: flex;
