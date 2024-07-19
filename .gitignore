@@ -1,0 +1,15 @@
+# OS X
+.DS_Store*
+Icon?
+._*
+.env
+
+# npm
+node_modules
+*.log
+*.gz
+
+# other
+.vscode
+.prettierrc
+.devlog.txt

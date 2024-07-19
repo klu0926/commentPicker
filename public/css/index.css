@@ -1,0 +1,211 @@
+* {
+  box-sizing: border-box;
+  margin: 0px;
+  padding: 0px;
+}
+
+:root {
+  --primary: #dc3545;
+  --primary-light: rgb(254, 229, 229);
+  --line: rgb(255, 172, 172);
+}
+
+p {
+  margin: 0;
+}
+
+/* general */
+
+.title-div {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 10px;
+}
+
+.title-youtube-div {
+  position: relative;
+}
+
+.title-youtube {
+  font-size: 7.5rem;
+  color: var(--primary);
+}
+
+.title-comment {
+  position: absolute;
+  top: -10px;
+  right: -42px;
+  font-size: 2.5rem;
+  color: var(--primary);
+  animation: floating-comment 0.3s ease-in-out infinite alternate;
+}
+
+.title-crown {
+  position: absolute;
+  top: -29px;
+  right: -38px;
+  font-size: 1.5rem;
+  color: var(--primary);
+  animation: floating-crown 0.35s ease-in-out infinite alternate;
+}
+
+#url-reset {
+  background-color: white;
+  border: 1px solid var(--primary);
+  color: var(--primary);
+}
+
+#url-reset:hover {
+  background-color: var(--primary);
+  color: white;
+}
+
+#url-input {
+  border: 1px solid var(--primary);
+}
+
+#url-input:focus {
+  outline: none;
+  box-shadow: none;
+  border: 1px solid var(--primary);
+}
+
+/* video container */
+#video-container {
+  border: 1px solid var(--primary);
+  padding: 10px;
+  border-radius: 5px;
+  margin: 15px 0px;
+}
+
+.line {
+  border-bottom: 1px solid var(--line);
+  margin: 10px 0px;
+}
+
+.button-icon {
+  font-size: 1.5rem;
+}
+
+.small-icon {
+  font-size: 1.2rem;
+}
+
+#video-title-div {
+  padding: 10px;
+  color: var(--primary);
+}
+
+#video-title {
+  font-size: 1.2rem;
+}
+
+#comment-and-pick-div {
+  display: none;
+}
+
+#comments-display {
+  display: flex;
+  flex-direction: column;
+  padding: 10px;
+  color: var(--primary);
+}
+
+#comments-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-top: 10px;
+  max-height: 500px;
+  overflow-y: scroll;
+  padding: 10px;
+  border-radius: 4px;
+  background-color: var(--primary-light);
+  scrollbar-color: var(--primary) white;
+}
+
+.comment-item {
+  display: inline-block;
+  padding: 5px 10px;
+  background-color: white;
+  border: 1px solid var(--primary);
+  border-radius: 4px;
+  color: var(--primary);
+}
+
+#winner-div {
+  display: flex;
+  flex-direction: column;
+  padding: 10px;
+  color: var(--primary);
+}
+
+#winner-name {
+  font-size: 2rem;
+  font-weight: bold;
+}
+
+.footer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 120px;
+  border-top: 1px solid var(--line);
+  gap: 5px;
+  margin-top: 100px;
+  color: var(--primary);
+}
+
+.footer i {
+  font-size: 1.5rem;
+}
+
+.loading-icon {
+  animation: loading-spin 1s linear infinite;
+}
+
+.flex-center {
+  display: flex;
+  justify-content: start;
+  align-items: center;
+  gap: 10px;
+  margin-right: 5px;
+}
+
+@keyframes logo {
+  from {
+    transform: scaleY(0.98) scaleX(1.005);
+  }
+  to {
+    transform: scaleY(1) scale(0.99);
+  }
+}
+
+@keyframes floating-comment {
+  from {
+    transform: translateY(0px);
+  }
+  to {
+    transform: translateY(4px);
+  }
+}
+
+@keyframes floating-crown {
+  from {
+    transform: translateY(0px) rotate(5deg) scaleY(1);
+  }
+  to {
+    transform: translateY(5px) rotate(0deg) scaleY(0.9);
+  }
+}
+
+@keyframes loading-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}

@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Comment Picker</title>
+    <!--style-->
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css"
+      integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN"
+      crossorigin="anonymous"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
+    />
+    <link rel="stylesheet" href="/css/index.css" />
+    <!--Script-->
+    <script
+      defer
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
+    ></script>
+    <script
+      defer
+      src="
+https://cdn.jsdelivr.net/npm/sweetalert2@11.11.0/dist/sweetalert2.all.min.js
+"
+    ></script>
+    <!---page script-->
+    <script type="module" src="/javascripts/index.js" defer></script>
+  </head>
+  <body>
+    <div class="main-container container" style="margin-top: 100px">
+      <div class="row justify-content-center">
+        <div class="col-12 col-lg-6">
+          <!--title div-->
+          <div class="title-div">
+            <div class="title-youtube-div">
+              <i class="title-youtube fa-brands fa-youtube"></i>
+              <i class="title-comment fa-regular fa-comment-dots"></i>
+              <i class="title-crown fa-solid fa-crown"></i>
+            </div>
+          </div>
+          <!--url input-->
+          <div class="input-group mb-3">
+            <input
+              id="url-input"
+              type="text"
+              class="form-control"
+              placeholder="..."
+              aria-label="Youtube-URL"
+            />
+            <!--reset-->
+            <button id="url-reset" class="btn" type="button">X</button>
+          </div>
+          <!--submit-->
+          <button id="url-submit" class="btn btn-danger w-100">
+            <i class="button-icon fa-solid fa-magnifying-glass"></i>
+          </button>
+          <!--video container-->
+          <div id="video-container">
+            <!--video title-->
+            <div id="video-title-div">
+              <p class="flex-center">
+                <i class="small-icon fa-solid fa-play"></i>
+                <span> : </span>
+                <span id="video-title"></span>
+              </p>
+            </div>
+            <div class="line"></div>
+            <!--comments display-->
+            <div id="comments-display">
+              <p class="flex-center">
+                <i class="small-icon fa-solid fa-child"></i>
+                <span> : </span>
+                <span id="comment-count"></span>
+              </p>
+              <!--comment list & pick-->
+              <div id="comment-and-pick-div">
+                <!--comment list-->
+                <div id="comments-list"></div>
+                <!--pick winner-->
+                <button
+                  id="pick-winner"
+                  class="button-icon btn btn-danger w-100 mt-3 p-1"
+                >
+                  <i class="fa-solid fa-dice"></i>
+                </button>
+              </div>
+            </div>
+            <div class="line"></div>
+            <!--winner-->
+            <div id="winner-div">
+              <p class="flex-center mb-2">
+                <i class="small-icon fa-solid fa-crown"></i>
+                <span> : </span>
+                <span id="winner-name"></span>
+              </p>
+              <p class="flex-center">
+                <i class="small-icon fa-regular fa-comment-dots"></i>
+                <span> : </span>
+                <span id="winner-comment"></span>
+              </p>
+            </div>
+          </div>
+          <!--footer-->
+          <div class="footer">
+            <i class="fa-brands fa-youtube"></i>
+            <i class="fa-regular fa-comment-dots"></i>
+            <i class="fa-solid fa-dice-six"></i>
+            <i class="fa-solid fa-crown"></i>
+          </div>
+        </div>
+        <!---end of col-->
+      </div>
+      <!---end of row-->
+    </div>
+    <!---end of main container-->
+  </body>
+</html>
