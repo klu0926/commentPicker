@@ -11,7 +11,6 @@ class Model {
   async getComments(url) {
     try {
       if (!url) throw new Error('Missing youtube url')
-      console.log('sending url:', url)
 
       // get comments
       const response = await fetch(serverUrl + `/api/comments/?url=${url}`)
@@ -124,7 +123,7 @@ class Controller {
 
       // deal with extra text in url (if any)
       let newUrl = ''
-      if (url.includes('you.be')) {
+      if (url.includes('youtu.be')) {
         let youtubeApp = 'https://youtube.be/'
         const urlArray = url.split('/')
         const id = urlArray[urlArray.length - 1]
