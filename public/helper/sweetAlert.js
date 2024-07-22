@@ -141,13 +141,17 @@ const sweetAlert = {
         <div class='swal-comment'>
         <i class="fa-regular fa-comment-dots"></i>
         <h3>${title}</h3>
-        <p>${text}</p>
-        </div>
+         <div class='swal-comment-text'>
+          <p>${text}</p>
+          </div>
+         </div>
         `,
         showConfirmButton: false,
+        showCloseButton: true,
         customClass: {
           title: 'swal-comment-title',
           text: 'swal-comment-text',
+          closeButton: 'swal-close'
         }
       }).then(result => {
         return resolve(result)
@@ -161,13 +165,17 @@ const sweetAlert = {
         <div class='swal-comment'>
         <i class="fa-solid fa-crown"></i>
         <h3>${title}</h3>
-        <p>${text}</p>
+        <div class='swal-comment-text'>
+          <p>${text}</p>
+          </div>
         </div>
         `,
         showConfirmButton: false,
+        showCloseButton: true,
         customClass: {
           title: 'swal-comment-title',
           text: 'swal-comment-text',
+          closeButton: 'swal-close'
         }
       }).then(result => {
         return resolve(result)
