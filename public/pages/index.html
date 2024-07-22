@@ -31,7 +31,19 @@ https://cdn.jsdelivr.net/npm/sweetalert2@11.11.0/dist/sweetalert2.all.min.js
     <script type="module" src="/javascripts/index.js" defer></script>
   </head>
   <body>
+    <img
+      class="background-img background-left"
+      src="/images/background.png"
+      alt="background"
+    />
+    <img
+      class="background-img background-right"
+      src="/images/background.png"
+      alt="background"
+    />
+
     <div class="main-container container">
+      <!---->
       <div class="row justify-content-center">
         <div class="col-12 col-lg-6">
           <!--title div-->
@@ -63,7 +75,7 @@ https://cdn.jsdelivr.net/npm/sweetalert2@11.11.0/dist/sweetalert2.all.min.js
             <!--video title-->
             <div id="video-title-div">
               <p class="flex-center">
-                <i class="small-icon fa-solid fa-play"></i>
+                <i class="small-icon fa-solid fa-play ps-1"></i>
                 <span> : </span>
                 <span id="video-title"></span>
               </p>
@@ -72,7 +84,7 @@ https://cdn.jsdelivr.net/npm/sweetalert2@11.11.0/dist/sweetalert2.all.min.js
             <!--comments display-->
             <div id="comments-display">
               <p class="flex-center">
-                <i class="small-icon fa-solid fa-child"></i>
+                <i class="fa-solid fa-user ps-1"></i>
                 <span> : </span>
                 <span id="comment-count"></span>
               </p>
@@ -92,24 +104,26 @@ https://cdn.jsdelivr.net/npm/sweetalert2@11.11.0/dist/sweetalert2.all.min.js
             <div class="line"></div>
             <!--winner-->
             <div id="winner-div">
-              <p class="flex-center mb-2">
+              <p class="winner-name-p flex-center mb-2">
                 <i class="small-icon fa-solid fa-crown"></i>
                 <span> : </span>
                 <span id="winner-name"></span>
               </p>
-              <p class="flex-center">
+              <p class="winner-comment-p flex-center">
                 <i class="small-icon fa-regular fa-comment-dots"></i>
                 <span> : </span>
                 <span id="winner-comment"></span>
               </p>
             </div>
-          </div>
-          <!--footer-->
-          <div class="footer">
-            <i class="fa-brands fa-youtube"></i>
-            <i class="fa-regular fa-comment-dots"></i>
-            <i class="fa-solid fa-dice-six"></i>
-            <i class="fa-solid fa-crown"></i>
+            <!--show winner-->
+            <div id="show-winner-div">
+              <button
+                id="show-winner"
+                class="button-icon btn btn-danger w-100 mt-3 p-1"
+              >
+                <i class="fa-solid fa-crown"></i>
+              </button>
+            </div>
           </div>
         </div>
         <!---end of col-->
@@ -117,5 +131,14 @@ https://cdn.jsdelivr.net/npm/sweetalert2@11.11.0/dist/sweetalert2.all.min.js
       <!---end of row-->
     </div>
     <!---end of main container-->
+    <!--footer-->
+    <div class="footer">
+      <a href="https://fontawesome.com/" target="_blank">
+        <i class="fa-brands fa-youtube"></i>
+        <i class="fa-regular fa-comment-dots"></i>
+        <i class="fa-solid fa-dice-six"></i>
+        <i class="fa-solid fa-crown"></i>
+      </a>
+    </div>
   </body>
 </html>

@@ -34,7 +34,7 @@ class View {
     const titleElement = document.querySelector('#video-title')
     titleElement.innerText = title
   }
-  renderComments(comments) {
+  renderComments(comments, handler) {
     const commentsList = document.querySelector('#comments-list')
     commentsList.innerHTML = ''
 
@@ -46,15 +46,23 @@ class View {
       commentItem.innerText = item.name
       commentItem.className = 'comment-item'
       commentsList.appendChild(commentItem)
+
+      // handler
+      if (handler) {
+        commentItem.dataset.name = item.name
+        commentItem.dataset.comment = item.comment
+        commentItem.onclick = handler
+
+      }
     });
   }
   renderWinnerTitle(winner) {
     const winnerName = document.querySelector('#winner-name')
-    winnerName.innerText = winner.name
+    winnerName.innerText = winner?.name || ''
   }
   renderWinnerComment(winner) {
     const winnerComment = document.querySelector('#winner-comment')
-    winnerComment.innerText = winner.comment
+    winnerComment.innerText = winner?.comment || ''
   }
   toggleCommentListAndPickBtn(isOn) {
     const commentAndPickDiv = document.querySelector('#comment-and-pick-div')
@@ -75,6 +83,14 @@ class View {
       <i class="button-icon fa-solid fa-magnifying-glass"></i>`
       submitButton.disabled = false
 
+    }
+  }
+  toggleShowWinnerButton(isOn) {
+    const showWinnerDiv = document.querySelector('#show-winner-div')
+    if (isOn) {
+      showWinnerDiv.style.display = 'block'
+    } else {
+      showWinnerDiv.style.display = 'none'
     }
   }
 }
@@ -101,11 +117,14 @@ class Controller {
   }
   async getCommentsHandler(url) {
     try {
+      // reset old winner (if any)
+      this.resetWinner()
+
       this.view.submitBtnLoading(true)
       const ok = await this.model.getComments(url)
       if (ok) {
         this.view.submitBtnLoading(false)
-        this.view.renderComments(this.model.video.comments)
+        this.view.renderComments(this.model.video.comments, this.commentOnClickHandler)
         this.view.renderVideoTitle(this.model.video.title)
         this.view.toggleCommentListAndPickBtn(true)
       }
@@ -119,6 +138,9 @@ class Controller {
   }
   pickWinnerHandler = () => {
     try {
+      // reset old winner
+      this.resetWinner()
+
       const view = this.view
       if (!this.model.video.title) throw new Error('Missing youtube video')
       if (this.model.video.comments?.length === 0) throw new Error('No comments to pick from')
@@ -141,7 +163,13 @@ class Controller {
         () => {
           if (count === howManyTimes) {
             clearInterval(interval)
-            view.renderWinnerComment(currentWinner)
+            this.view.renderWinnerComment(currentWinner)
+            // toggleShowWinnerButton
+            this.view.toggleShowWinnerButton(true)
+            // handle show winner button
+            document.querySelector('#show-winner').onclick = () => {
+              this.showWinnerButtonHandler(currentWinner)
+            }
             return
           }
           pickRandomUser(comments, view)
@@ -150,14 +178,23 @@ class Controller {
         timeBetween
       )
 
-
     } catch (err) {
       sweetAlert.error('Fail', err.message)
     }
   }
-
+  commentOnClickHandler = (e) => {
+    const target = e.target
+    sweetAlert.youtubeComment(target.dataset.name, target.dataset.comment)
+  }
+  showWinnerButtonHandler(winner) {
+    sweetAlert.winnerComment(winner.name, winner.comment)
+  }
+  resetWinner() {
+    this.view.renderWinnerTitle()
+    this.view.renderWinnerComment()
+    this.view.toggleShowWinnerButton(false)
+  }
 }
-
 
 
 const model = new Model()

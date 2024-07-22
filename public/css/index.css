@@ -8,15 +8,40 @@
   --primary: #dc3545;
   --primary-light: rgb(254, 229, 229);
   --line: rgb(255, 172, 172);
+  --gray: rgb(218, 218, 218);
+}
+
+body {
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  overflow-x: hidden;
 }
 
 p {
   margin: 0;
 }
 
-/* general */
 .main-container {
-  margin-top: 60px;
+  margin-top: 100px;
+  min-height: 600px;
+  z-index: 2;
+}
+
+.background-img {
+  position: absolute;
+  top: 3rem;
+  height: 40rem;
+  opacity: 0.4;
+  z-index: 1;
+}
+
+.background-right {
+  right: -20rem;
+}
+
+.background-left {
+  left: -20rem;
 }
 
 .title-div {
@@ -81,6 +106,7 @@ p {
   padding: 10px;
   border-radius: 5px;
   margin: 15px 0px;
+  background-color: white;
 }
 
 .line {
@@ -136,6 +162,12 @@ p {
   border: 1px solid var(--primary);
   border-radius: 4px;
   color: var(--primary);
+  cursor: pointer;
+}
+
+.comment-item:hover {
+  background-color: var(--primary);
+  color: white;
 }
 
 #winner-div {
@@ -145,19 +177,37 @@ p {
   color: var(--primary);
 }
 
+.winner-name-p {
+  min-height: 60px;
+}
+
 #winner-name {
-  font-size: 2rem;
+  font-size: 2.5rem;
   font-weight: bold;
 }
 
+#show-winner-div {
+  display: none;
+  padding: 10px;
+}
+
 .footer {
+  position: relative;
   display: flex;
   justify-content: center;
   align-items: center;
-  height: 120px;
+  height: 200px;
+  width: 100%;
   border-top: 1px solid var(--line);
   gap: 5px;
-  margin-top: 100px;
+  margin-top: 30px;
+  color: var(--primary);
+  background-color: var(--primary-light);
+  z-index: 10;
+}
+
+.footer a {
+  text-decoration: none;
   color: var(--primary);
 }
 
@@ -210,5 +260,64 @@ p {
   }
   to {
     transform: rotate(360deg);
+  }
+}
+
+/* sweet alert */
+.swal-comment {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: start;
+  gap: 10px;
+  padding: 10px 5px;
+}
+
+.swal-comment i {
+  font-size: 3em;
+  color: #333;
+  color: var(--primary);
+  margin-bottom: 10px;
+  animation: swal-comment-icon 1s linear;
+}
+
+.swal-comment h3 {
+  color: var(--primary);
+}
+
+.swal-comment p {
+  text-align: left;
+}
+
+@keyframes swal-comment-icon {
+  0% {
+    transform: rotate(-10deg);
+  }
+  30% {
+    transform: rotate(30deg);
+  }
+  50% {
+    transform: rotate(-3deg);
+  }
+  70% {
+    transform: rotate(5deg);
+  }
+  100% {
+    transform: rotate(0deg);
+  }
+}
+
+@media screen and (max-width: 1000px) {
+  .background-img {
+    display: none;
+  }
+}
+
+@media screen and (max-width: 1200px) {
+  .background-right {
+    right: -25rem;
+  }
+  .background-left {
+    left: -25rem;
   }
 }

@@ -134,6 +134,46 @@ const sweetAlert = {
       }
     }, timer)
   },
+  youtubeComment: (title, text) => {
+    return new Promise((resolve, reject) => {
+      Swal.fire({
+        html: `
+        <div class='swal-comment'>
+        <i class="fa-regular fa-comment-dots"></i>
+        <h3>${title}</h3>
+        <p>${text}</p>
+        </div>
+        `,
+        showConfirmButton: false,
+        customClass: {
+          title: 'swal-comment-title',
+          text: 'swal-comment-text',
+        }
+      }).then(result => {
+        return resolve(result)
+      })
+    })
+  },
+  winnerComment: (title, text) => {
+    return new Promise((resolve, reject) => {
+      Swal.fire({
+        html: `
+        <div class='swal-comment'>
+        <i class="fa-solid fa-crown"></i>
+        <h3>${title}</h3>
+        <p>${text}</p>
+        </div>
+        `,
+        showConfirmButton: false,
+        customClass: {
+          title: 'swal-comment-title',
+          text: 'swal-comment-text',
+        }
+      }).then(result => {
+        return resolve(result)
+      })
+    })
+  },
 }
 
 export default sweetAlert
