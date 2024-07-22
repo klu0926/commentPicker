@@ -311,6 +311,9 @@ p {
   .background-img {
     display: none;
   }
+  .winner-name-p {
+    min-height: 40px;
+  }
   #winner-name {
     font-size: 1.5rem;
   }
