@@ -73,8 +73,13 @@ https://cdn.jsdelivr.net/npm/sweetalert2@11.11.0/dist/sweetalert2.all.min.js
               <i class="title-crown fa-solid fa-crown"></i>
             </div>
           </div>
-          <!--url input-->
+          <!--url input group-->
           <div class="input-group mb-3">
+            <!--open folder-->
+            <button id="open-folder" class="btn input-button" type="button">
+              <i class="fa-regular fa-folder-open"></i>
+            </button>
+            <!---url input-->
             <input
               id="url-input"
               type="text"
@@ -82,8 +87,14 @@ https://cdn.jsdelivr.net/npm/sweetalert2@11.11.0/dist/sweetalert2.all.min.js
               placeholder="..."
               aria-label="Youtube-URL"
             />
+            <!--add channel-->
+            <button id="add-channel" class="btn input-button" type="button">
+              <i class="fa-solid fa-user-plus"></i>
+            </button>
             <!--reset-->
-            <button id="url-reset" class="btn" type="button">X</button>
+            <button id="url-reset" class="btn input-button" type="button">
+              <i class="fa-solid fa-xmark"></i>
+            </button>
           </div>
           <!--submit-->
           <button id="url-submit" class="btn btn-danger w-100">
@@ -98,6 +109,7 @@ https://cdn.jsdelivr.net/npm/sweetalert2@11.11.0/dist/sweetalert2.all.min.js
                 <span> : </span>
                 <span id="video-title"></span>
               </p>
+              <div id="youtube"></div>
             </div>
             <div class="line"></div>
             <!--comments display-->

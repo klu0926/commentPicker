@@ -32,14 +32,15 @@ const sweetAlert = {
       })
     })
   },
+  // {isConfirmed: true, isDenied: false, isDismissed: false, value: true}
   confirm: (title, text) => {
     return new Promise((resolve, reject) => {
       Swal.fire({
         title: title,
         text: text || '',
-        showDenyButton: true,
         confirmButtonText: 'Yes',
         confirmButtonColor: '#3894F1',
+        showDenyButton: true,
         denyButtonText: 'No',
         denyButtonColor: '#F7647D',
         customClass: {
@@ -171,6 +172,81 @@ const sweetAlert = {
         </div>
         `,
         showConfirmButton: false,
+        showCloseButton: true,
+        customClass: {
+          title: 'swal-comment-title',
+          text: 'swal-comment-text',
+          closeButton: 'swal-close'
+        }
+      }).then(result => {
+        return resolve(result)
+      })
+    })
+  },
+  addChannelPreview: (channelData) => {
+    return new Promise((resolve, reject) => {
+      Swal.fire({
+        html: `
+        <div class='swal-channel-preview'>
+          <div class='thumbnail'>
+            <img src=${channelData.thumbnail.url}>
+          </div>
+          <div class='info'>
+            <p class='title'>${channelData.title}</p>
+            <p class='handle'>${channelData.handle}</p>
+            <p class='description'>${channelData.description}</p>
+            </div>
+        </div>
+        `,
+        showConfirmButton: true,
+        confirmButtonText: 'Add Channel',
+        confirmButtonColor: '#3894F1',
+        showDenyButton: true,
+        denyButtonText: 'No',
+        denyButtonColor: '#F7647D',
+        customClass: {
+          title: 'swal-comment-title',
+          text: 'swal-comment-text',
+          closeButton: 'swal-close'
+        }
+      }).then(result => {
+        return resolve(result)
+      })
+    })
+  },
+  channelFolder: (channels) => {
+    return new Promise((resolve, reject) => {
+      let channelsDiv = null
+      if (!channels || channels.length === 0) {
+        channelsDiv = [`<p class='folder-empty'>Folder Empty</p>`]
+      } else {
+        channelsDiv = channels.map(channel =>
+          `<div class='swal-channel-item'>
+          <div class='swal-channel-preview' data-channel-id=${channel.channelId} >
+              <div class='thumbnail'>
+                <img src=${channel.thumbnail.url}>
+              </div>
+              <div class='info'>
+                <p class='title'>${channel.title}</p>
+                <p class='handle'>${channel.handle}</p>
+              </div>
+              <button class='btn btn-danger remove-channel-btn' data-channel-id=${channel.channelId}>
+              <i class="fa-solid fa-xmark"></i>
+            </button>
+          </div>
+          <div class='video-list'></div>
+        </div>`
+        )
+      }
+
+      Swal.fire({
+        html: `
+        <div class='swal-channel-folder'>
+          ${channelsDiv.join('')}
+        </div>
+        `,
+        showConfirmButton: false,
+        showDenyButton: false,
         showCloseButton: true,
         customClass: {
           title: 'swal-comment-title',
