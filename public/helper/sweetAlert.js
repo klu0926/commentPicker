@@ -221,7 +221,11 @@ const sweetAlert = {
         channelsDiv = [`<p class='folder-empty'>Folder Empty</p>`]
       } else {
         channelsDiv = channels.map(channel =>
-          `<div class='swal-channel-item'>
+        `<div class='swal-channel-item'>
+          <div class='channel-preview-loading'>
+            <div class='channel-preview-loading-cover'></div>
+            <i class="fa-solid fa-spinner loading-icon"></i>
+          </div>
           <div class='swal-channel-preview' data-channel-id=${channel.channelId} >
               <div class='thumbnail'>
                 <img src=${channel.thumbnail.url}>
@@ -231,8 +235,8 @@ const sweetAlert = {
                 <p class='handle'>${channel.handle}</p>
               </div>
               <button class='btn btn-danger remove-channel-btn' data-channel-id=${channel.channelId}>
-              <i class="fa-solid fa-xmark"></i>
-            </button>
+                  <i class="fa-solid fa-xmark"></i>
+               </button>
           </div>
           <div class='video-list'></div>
         </div>`

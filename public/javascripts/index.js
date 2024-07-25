@@ -339,7 +339,7 @@ class Controller {
     if (channelItems) {
       channelItems.forEach(item => {
         item.onclick = (e) => {
-          this.channelItemHandler(e)
+          this.channelItemHandler(e, item)
         }
       })
     }
@@ -371,18 +371,21 @@ class Controller {
     }
   }
   // onclick use channel id to get recent videos of the channel
-  channelItemHandler = async (e) => {
+  channelItemHandler = async (e, channelItem) => {
     try {
       e.stopPropagation()
-      let target = e.target
-      // toggle if is active
-      if (target.parentElement.classList.contains('active')) {
-        target.parentElement.classList.remove('active')
+
+      // if item is active, close item and return
+      if (channelItem.classList.contains('active')) {
+        channelItem.classList.remove('active')
         return
+      } else {
+        // start loading
+        channelItem.classList.add('loading')
       }
 
       // get video
-      const channelId = target.dataset.channelId
+      const channelId = channelItem.querySelector('.swal-channel-preview').dataset.channelId
       let videos = this.model.videoMap.get(channelId)
       // check if video exist in model.videoMap
       if (!videos) {
@@ -396,8 +399,7 @@ class Controller {
       document.querySelectorAll('.swal-channel-item').forEach(item => {
         item.classList.remove('active')
       })
-      const listItem = target.parentElement
-      const videoList = listItem.querySelector('.video-list')
+      const videoList = channelItem.querySelector('.video-list')
       if (videoList) {
         // render videos in list
         const videoArray = videos.map(video => {
@@ -414,7 +416,7 @@ class Controller {
           `
         })
         videoList.innerHTML = videoArray.join('')
-        listItem.classList.add('active')
+        channelItem.classList.add('active')
       }
 
       // video list item handler
@@ -434,6 +436,9 @@ class Controller {
       }
     } catch (err) {
       sweetAlert.error('Fail', err)
+      channelItem.classList.remove('loading')
+    } finally {
+      channelItem.classList.remove('loading')
     }
   }
 }
