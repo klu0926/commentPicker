@@ -2,7 +2,7 @@
 
 YouTube Comment Picker is a web application designed to randomly select a comment from a YouTube video. This tool is useful for giveaways, contests, or simply engaging with your audience by picking random comments from your videos.
 
-🌐 website : <a href="https://www.yourwebsite.com/" target="_blank">https://www.yourwebsite.com/</a>
+🌐 Website : <a href="https://comment-picker-2755d12b5505.herokuapp.com/" target="_blank">https://comment-picker-2755d12b5505.herokuapp.com/</a>
 
 ## 📖 Table of Contents
 
@@ -14,15 +14,15 @@ YouTube Comment Picker is a web application designed to randomly select a commen
 
 ## 1. Screenshots 📷
 
-![cover](/images/screenshots/cover.png)
+![cover](public/images/screenshots/cover.png)
 
-![home](/images/screenshots/home.png)
+![home](public/images/screenshots/home.png)
 
-![add](/images/screenshots/add.png)
+![add](public/images/screenshots/add.png)
 
-![channel](/images/screenshots/channel-list.png)
+![channel](public/images/screenshots/channel-list-full.png)
 
-![winner](/images/screenshots/winner.png)
+![winner](public/images/screenshots/winner.png)
 
 ## 2. Features ⭐️
 
